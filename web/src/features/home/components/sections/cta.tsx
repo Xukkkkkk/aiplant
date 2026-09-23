@@ -53,29 +53,27 @@ export function CTA(props: CTAProps) {
         className='mx-auto max-w-2xl text-center'
         animation='scale-in'
       >
-        <h2 className='text-2xl leading-tight font-bold tracking-tight md:text-4xl'>
-          {t('Ready to simplify')}
+        <h2 className='text-2xl leading-tight font-extrabold tracking-tight md:text-4xl'>
+          准备好体验下一代
           <br />
-          <span className='bg-gradient-to-r from-blue-400 via-violet-400 to-purple-500 bg-clip-text text-transparent'>
-            {t('your AI integration?')}
+          <span className='bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-400 bg-clip-text text-transparent'>
+            企业级 AI 智能算力中枢了吗？
           </span>
         </h2>
-        <p className='text-muted-foreground/80 mx-auto mt-5 max-w-md text-sm leading-relaxed md:text-base'>
-          {t(
-            'Deploy your own gateway and start routing requests through your configured upstream services.'
-          )}
+        <p className='text-muted-foreground/90 mx-auto mt-5 max-w-md text-sm leading-relaxed md:text-base'>
+          即刻开启接入，尊享超高可用 SLA 保障、毫秒级智能容灾调度与全生命周期开发支持。
         </p>
         <div className='mt-8 flex items-center justify-center gap-3'>
-          <Button className='group rounded-lg' render={<Link to='/sign-up' />}>
-            {t('Get Started')}
-            <ArrowRight className='ml-1 size-3.5 transition-transform duration-200 group-hover:translate-x-0.5' />
+          <Button className='group h-11 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-6 text-sm font-semibold shadow-[0_0_20px_rgba(6,182,212,0.25)] transition-all' render={<Link to='/sign-up' />}>
+            立即开通使用
+            <ArrowRight className='ml-1.5 size-4 transition-transform duration-200 group-hover:translate-x-0.5' />
           </Button>
           <Button
             variant='outline'
-            className='border-border/50 hover:border-border hover:bg-muted/50 rounded-lg'
+            className='border-border/60 hover:border-cyan-500/50 hover:bg-muted/40 h-11 rounded-lg px-5 text-sm font-medium'
             render={<Link to='/pricing' />}
           >
-            {t('View Pricing')}
+            探索模型与价格
           </Button>
         </div>
       </AnimateInView>

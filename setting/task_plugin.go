@@ -22,10 +22,7 @@ type TaskPluginMarketplaceSource struct {
 }
 
 func defaultTaskPluginMarketplaceSources() []TaskPluginMarketplaceSource {
-	return []TaskPluginMarketplaceSource{
-		{Name: "Official", IndexURL: officialTaskPluginMarketplaceIndexURL},
-		{Name: "GitHub", IndexURL: githubTaskPluginMarketplaceIndexURL},
-	}
+	return []TaskPluginMarketplaceSource{}
 }
 
 func GetTaskPluginMarketplaceSources() []TaskPluginMarketplaceSource {

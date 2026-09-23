@@ -1,0 +1,29 @@
+<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="nebula-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#00f2fe" />
+      <stop offset="50%" stopColor="#4facfe" />
+      <stop offset="100%" stopColor="#8a2387" />
+    </linearGradient>
+    <linearGradient id="nebula-grad-2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stopColor="#f12711" />
+      <stop offset="100%" stopColor="#f5af19" />
+    </linearGradient>
+    <linearGradient id="nebula-core" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#38ef7d" />
+      <stop offset="100%" stopColor="#11998e" />
+    </linearGradient>
+    <filter id="glow-effect" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <rect width="120" height="120" rx="30" fill="#090d16" />
+  <!-- Outer Matrix Hexagon -->
+  <path d="M60 16L100 39.09V80.91L60 104L20 80.91V39.09L60 16Z" stroke="url(#nebula-grad-1)" stroke-width="5" stroke-linejoin="round" filter="url(#glow-effect)" />
+  <!-- Inner Prism Hexagon -->
+  <path d="M60 32L88 48.17V71.83L60 88L32 71.83V48.17L60 32Z" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="4 3" opacity="0.8" />
+  <!-- Center Core Node -->
+  <circle cx="60" cy="60" r="14" fill="url(#nebula-grad-1)" />
+  <circle cx="60" cy="60" r="7" fill="#ffffff" />
+</svg>

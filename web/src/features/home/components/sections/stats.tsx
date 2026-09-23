@@ -98,14 +98,14 @@ export function Stats(_props: StatsProps) {
   const { t } = useTranslation()
 
   const stats: StatItem[] = [
-    { end: 50, suffix: '+', label: t('upstream services integrated') },
-    { end: 100, suffix: '+', label: t('model billing support') },
-    { end: 50, suffix: '+', label: t('compatible API routes') },
-    { end: 10, suffix: '+', label: t('scheduling controls') },
+    { end: 99.99, suffix: '%', label: '服务高可用 SLA 保障', decimals: 2 },
+    { end: 8, suffix: 'ms', label: '核心路由节点平均时延' },
+    { end: 120, suffix: '+', label: '主流大模型全协议支持' },
+    { end: 50, suffix: 'M+', label: '安全过滤与调度请求量' },
   ]
 
   return (
-    <div className='border-border/40 bg-muted/10 relative z-10 border-y'>
+    <div className='border-border/50 bg-gradient-to-r from-cyan-950/20 via-background to-purple-950/20 relative z-10 border-y backdrop-blur-sm'>
       <div className='mx-auto max-w-6xl px-6 py-10 md:py-12'>
         <div className='grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12'>
           {stats.map((s) => (
@@ -113,10 +113,10 @@ export function Stats(_props: StatsProps) {
               key={s.label}
               className='flex flex-col items-center text-center'
             >
-              <span className='text-2xl font-bold tracking-tight md:text-3xl'>
+              <span className='bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent text-2xl font-black tracking-tight md:text-3xl'>
                 <Counter end={s.end} suffix={s.suffix} decimals={s.decimals} />
               </span>
-              <span className='text-muted-foreground mt-1.5 text-xs'>
+              <span className='text-muted-foreground mt-1.5 text-xs font-medium'>
                 {s.label}
               </span>
             </div>

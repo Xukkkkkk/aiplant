@@ -3834,14 +3834,14 @@ export function ChannelMutateDrawer({
             {currentType === 40 && (
               <Alert>
                 <AlertDescription>
-                  {t('Referral link:')}{' '}
+                  {t('Console:')}{' '}
                   <a
-                    href='https://cloud.siliconflow.cn/i/hij0YNTZ'
+                    href='https://cloud.siliconflow.cn'
                     target='_blank'
                     rel='noopener noreferrer'
                     className='text-primary underline'
                   >
-                    {t('https://cloud.siliconflow.cn/i/hij0YNTZ')}
+                    https://cloud.siliconflow.cn
                   </a>
                 </AlertDescription>
               </Alert>

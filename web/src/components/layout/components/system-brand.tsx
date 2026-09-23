@@ -51,9 +51,39 @@ export function SystemBrand(props: SystemBrandProps) {
   const { logo } = useSystemConfig()
 
   const variant = props.variant ?? 'sidebar'
-  const name = status?.system_name || props.defaultName || 'New API'
+  const name = status?.system_name || props.defaultName || 'Nebula Matrix AI'
   const version =
     status?.version || props.defaultVersion || t('Unknown version')
+
+  const isCustomLogo = Boolean(logo && logo !== '/logo.png')
+
+  const renderIcon = () => {
+    if (isCustomLogo) {
+      return (
+        <img
+          src={logo}
+          alt={t('Logo')}
+          className='size-full rounded-md object-cover'
+        />
+      )
+    }
+    return (
+      <svg viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg' className='size-full'>
+        <defs>
+          <linearGradient id='nb-icon-grad' x1='0%' y1='0%' x2='100%' y2='100%'>
+            <stop offset='0%' stopColor='#00f2fe' />
+            <stop offset='50%' stopColor='#38bdf8' />
+            <stop offset='100%' stopColor='#6366f1' />
+          </linearGradient>
+        </defs>
+        <rect width='32' height='32' rx='7' fill='#090d16' />
+        <path d='M16 4.5L26.5 10.5V21.5L16 27.5L5.5 21.5V10.5L16 4.5Z' stroke='url(#nb-icon-grad)' strokeWidth='1.8' strokeLinejoin='round' />
+        <path d='M16 9L23 13.5V20.5L16 24L9 20.5V13.5L16 9Z' stroke='#38bdf8' strokeWidth='1' strokeDasharray='2 2' fill='url(#nb-icon-grad)' fillOpacity='0.25' />
+        <circle cx='16' cy='16' r='3.2' fill='url(#nb-icon-grad)' />
+        <circle cx='16' cy='16' r='1.4' fill='#ffffff' />
+      </svg>
+    )
+  }
 
   if (variant === 'inline') {
     return (
@@ -61,18 +91,14 @@ export function SystemBrand(props: SystemBrandProps) {
         to='/'
         aria-label={t('Go to home')}
         className={cn(
-          'text-foreground inline-flex h-7 min-w-0 items-center gap-1.5 rounded-md px-1.5 text-sm font-medium transition-colors outline-none select-none',
+          'text-foreground inline-flex h-7 min-w-0 items-center gap-2 rounded-md px-1.5 text-sm font-semibold tracking-tight transition-colors outline-none select-none',
           'hover:bg-accent focus-visible:ring-ring/40 focus-visible:ring-2'
         )}
       >
         <div className='flex size-5 shrink-0 items-center justify-center overflow-hidden rounded-md'>
-          <img
-            src={logo}
-            alt={t('Logo')}
-            className='size-full rounded-md object-cover'
-          />
+          {renderIcon()}
         </div>
-        <span className='max-w-[12rem] truncate'>{name}</span>
+        <span className='max-w-[12rem] truncate font-bold bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text'>{name}</span>
       </Link>
     )
   }
@@ -85,16 +111,12 @@ export function SystemBrand(props: SystemBrandProps) {
           className='hover:text-sidebar-foreground active:text-sidebar-foreground cursor-default hover:bg-transparent active:bg-transparent'
           render={<div />}
         >
-          <div className='flex aspect-square size-8 items-center justify-center overflow-hidden rounded-lg'>
-            <img
-              src={logo}
-              alt={t('Logo')}
-              className='size-full rounded-lg object-cover'
-            />
+          <div className='flex aspect-square size-8 items-center justify-center overflow-hidden rounded-lg shadow-sm'>
+            {renderIcon()}
           </div>
           <div className='grid flex-1 text-start text-sm leading-tight group-data-[collapsible=icon]:hidden'>
-            <span className='truncate font-semibold'>{name}</span>
-            <span className='truncate text-xs'>{version}</span>
+            <span className='truncate font-bold tracking-tight'>{name}</span>
+            <span className='truncate text-[11px] text-muted-foreground/80 font-mono'>{version}</span>
           </div>
         </SidebarMenuButton>
       </SidebarMenuItem>
