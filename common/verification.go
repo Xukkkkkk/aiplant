@@ -44,6 +44,20 @@ func RegisterVerificationCodeWithKey(key string, code string, purpose string) {
 	}
 }
 
+func CanSendVerificationCode(key string, purpose string, cooldownSeconds int) (bool, int) {
+	verificationMutex.Lock()
+	defer verificationMutex.Unlock()
+	value, okay := verificationMap[purpose+key]
+	if !okay {
+		return true, 0
+	}
+	elapsed := int(time.Since(value.time).Seconds())
+	if elapsed < cooldownSeconds {
+		return false, cooldownSeconds - elapsed
+	}
+	return true, 0
+}
+
 func VerifyCodeWithKey(key string, code string, purpose string) bool {
 	verificationMutex.Lock()
 	defer verificationMutex.Unlock()

@@ -327,6 +327,8 @@ func Register(c *gin.Context) {
 		}
 	}
 
+	middleware.RecordIPRegistration(c.ClientIP())
+
 	c.JSON(http.StatusOK, gin.H{
 		"success": true,
 		"message": "",

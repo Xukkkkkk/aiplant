@@ -62,7 +62,7 @@ var MaxRecentItems = 1000
 var PasswordLoginEnabled = true
 var PasswordLoginEncryptionEnabled = false
 var PasswordRegisterEnabled = true
-var EmailVerificationEnabled = false
+var EmailVerificationEnabled = true
 var GitHubOAuthEnabled = false
 var LinuxDOOAuthEnabled = false
 var WeChatAuthEnabled = false
@@ -232,6 +232,12 @@ var (
 	SearchRateLimitEnable         = true
 	SearchRateLimitNum            = 10
 	SearchRateLimitDuration int64 = 60
+
+	// Per-IP registration rate limits
+	RegisterIPDailyLimit          = 5
+	RegisterIPDailyDuration int64 = 86400 // 24 hours
+	RegisterIPShortLimit          = 2
+	RegisterIPShortDuration int64 = 60    // 60 seconds
 )
 
 var RateLimitKeyExpirationDuration = 20 * time.Minute

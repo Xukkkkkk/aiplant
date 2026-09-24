@@ -48,6 +48,8 @@ func InitOptionMap() {
 	common.OptionMap["WeChatAuthEnabled"] = strconv.FormatBool(common.WeChatAuthEnabled)
 	common.OptionMap["TurnstileCheckEnabled"] = strconv.FormatBool(common.TurnstileCheckEnabled)
 	common.OptionMap["RegisterEnabled"] = strconv.FormatBool(common.RegisterEnabled)
+	common.OptionMap["RegisterIPDailyLimit"] = strconv.Itoa(common.RegisterIPDailyLimit)
+	common.OptionMap["RegisterIPShortLimit"] = strconv.Itoa(common.RegisterIPShortLimit)
 	common.OptionMap["AutomaticDisableChannelEnabled"] = strconv.FormatBool(common.AutomaticDisableChannelEnabled)
 	common.OptionMap["AutomaticEnableChannelEnabled"] = strconv.FormatBool(common.AutomaticEnableChannelEnabled)
 	common.OptionMap["LogConsumeEnabled"] = strconv.FormatBool(common.LogConsumeEnabled)
@@ -465,6 +467,16 @@ func updateOptionMap(key string, value string) (err error) {
 		jsplugin.DefaultRegistry.SetDisabledFactoryKeys(setting.ParseTaskPluginDisabledFactoryKeys(value))
 	}
 	switch key {
+	case "RegisterIPDailyLimit":
+		intValue, _ := strconv.Atoi(value)
+		if intValue > 0 {
+			common.RegisterIPDailyLimit = intValue
+		}
+	case "RegisterIPShortLimit":
+		intValue, _ := strconv.Atoi(value)
+		if intValue > 0 {
+			common.RegisterIPShortLimit = intValue
+		}
 	case "EmailDomainWhitelist":
 		common.EmailDomainWhitelist = strings.Split(value, ",")
 	case "SMTPServer":

@@ -226,6 +226,13 @@ func SendEmailVerification(c *gin.Context) {
 		common.ApiErrorI18n(c, i18n.MsgUserEmailAlreadyTaken)
 		return
 	}
+	if canSend, remainingSeconds := common.CanSendVerificationCode(email, common.EmailVerificationPurpose, 60); !canSend {
+		c.JSON(http.StatusTooManyRequests, gin.H{
+			"success": false,
+			"message": fmt.Sprintf("验证码发送过于频繁，请等待 %d 秒后再试", remainingSeconds),
+		})
+		return
+	}
 	code := common.GenerateVerificationCode(6)
 	common.RegisterVerificationCodeWithKey(email, code, common.EmailVerificationPurpose)
 	subject := fmt.Sprintf("%s邮箱验证邮件", common.SystemName)
