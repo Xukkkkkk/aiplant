@@ -401,6 +401,18 @@ func SetApiRouter(router *gin.Engine) {
 			modelsRoute.DELETE("/:id", controller.DeleteModelMeta)
 		}
 
+		// Free Token Hub Routes
+		freeTokenRoute := apiRouter.Group("/free-token")
+		freeTokenRoute.Use(middleware.AdminAuth())
+		{
+			freeTokenRoute.GET("/overview", controller.GetFreeTokenOverview)
+			freeTokenRoute.POST("/test-model", controller.TestFreeTokenModel)
+			freeTokenRoute.POST("/set-zero-ratio", controller.SetFreeModelsZeroRatio)
+			freeTokenRoute.POST("/sync", controller.SyncFreeTokenChannel)
+			freeTokenRoute.Any("/hub/*proxyPath", controller.ProxyFreeTokenHub)
+		}
+		apiRouter.Any("/free-token-proxy/*proxyPath", controller.ProxyFreeTokenHub)
+
 		// Deployments (model deployment management)
 		deploymentsRoute := apiRouter.Group("/deployments")
 		deploymentsRoute.Use(middleware.AdminAuth())

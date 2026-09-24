@@ -31,6 +31,7 @@ import {
   Radio,
   ServerCog,
   Settings,
+  Sparkles,
   ShieldCheck,
   Ticket,
   User,
@@ -141,6 +142,11 @@ export function useSidebarData(): SidebarData {
             title: t('Models'),
             url: '/models/metadata',
             icon: Box,
+          },
+          {
+            title: t('Free Quota Hub'),
+            url: '/free-tokens',
+            icon: Sparkles,
           },
           {
             title: t('Users'),
