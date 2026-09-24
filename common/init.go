@@ -136,7 +136,7 @@ func InitEnv() {
 
 	RegisterIPDailyLimit = GetEnvOrDefault("REGISTER_IP_DAILY_LIMIT", 5)
 	RegisterIPShortLimit = GetEnvOrDefault("REGISTER_IP_SHORT_LIMIT", 2)
-	EmailVerificationEnabled = GetEnvOrDefaultBool("EMAIL_VERIFICATION_ENABLED", EmailVerificationEnabled)
+	EmailVerificationEnabled = GetEnvOrDefaultBool("EMAIL_VERIFICATION_ENABLED", false)
 	initConstantEnv()
 }
 
